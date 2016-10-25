@@ -59,7 +59,7 @@ This would be an example of the gold.csv file which will have a very similar str
 
 ## Current State
 
-Right now, I am working on automatizing all the data mining which requires scripting. At this moment I have just made two simple tools. In the future I will make the next ones to get the remaining information and some extra help would be appreciated :).
+Right now, I am working on automatizing all the data mining which requires scripting. At this moment I have just made two simple tools. In the future I will make the next ones to get the remaining information and some extra help would be appreciated :)
 The tools are made in Python and Javascript Nodejs so they will work in Linux, Windows, Mac...
 
 ### Companies
