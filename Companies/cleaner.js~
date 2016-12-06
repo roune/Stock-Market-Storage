@@ -6,7 +6,7 @@
 var readlineSync = require('readline-sync');
 var stop = false;
 var files = [];
-while (!stop) {
+/*while (!stop) {
 	var ans = readlineSync.question('Type the list you want to clean: ');
 	files.push(ans);
 	ans = readlineSync.question('Do you want to add some more files? (y/n) ');
@@ -14,7 +14,13 @@ while (!stop) {
 		continue
 	else
 		stop = true;
-}
+}*/
+
+process.argv.forEach(function (val, index, array) {
+  console.log(index + ': ' + val);
+  if (index > 1)
+	  files.push(val);
+});
 
 var fs = require("fs");
 
