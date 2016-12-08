@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Clean entry files
-node cleaner.js europelist.csv nasdaq.csv
+nodejs cleaner.js europelist.csv nasdaq.csv
 # Download history stock prices from previous markets
-node downloader.js nasdaq.json
+nodejs downloader.js nasdaq.json
+	

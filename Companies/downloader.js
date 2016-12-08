@@ -33,7 +33,10 @@ indexes.forEach(function(i) {
 
 		fs.readFile(file, 'utf-8', function(err, data) {
 			if (err) throw err;
-
+			if(data.indexOf("automated data")===-1) {
+				console.log("Not downloaded: ", file);
+				return;
+			}
 			var lines = data.trim().split('\n');
 			fs.appendFileSync(directory + "__tmp" + symbol + ".csv", lines[0]);
 			
