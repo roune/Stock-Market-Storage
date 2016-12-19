@@ -1,6 +1,6 @@
 #!/bin/bash
 # execute with sudo
-service tor start
+#service tor start
 # Clean entry files
 FILES=./lists/*.csv
 mkdir markets
@@ -15,4 +15,4 @@ do
 	nodejs charger.js $m #nasdaq.json
 done
 # Quit tor connection
-service tor stop
+#service tor stop

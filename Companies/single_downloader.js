@@ -12,6 +12,8 @@ if (!fs.existsSync(directory)){
 }
 
 var index = market.substring(market.lastIndexOf("/") + 1);
+index = index.substring(0, index.lastIndexOf("."));
+index = index.toUpperCase();
 
 // Download function.
 var download = function(url, dest, cb) {
@@ -31,6 +33,20 @@ var url = "http://www.google.com/finance/historical?q=" + index + ":" + symbol +
 var file = directory + symbol + ".csv";
 download(url, file, function(err) {
 	if (err) throw err;
-	console.log("Succesfull download of " + symbol);
+	fs.readFile(file, 'utf-8', function(err, data) {
+		if (err) throw err;
+		if(data.indexOf("automated data")!==-1) {
+			console.log("Automated detection: ", file);
+			fs.unlink(file);
+			var errors = fs.appendFileSync("not_downloaded.txt", index + ":" + symbol);
+			return;
+		} else if (data.indexOf("requested URL was not found on this server")!==-1) {
+			console.log("404 error: ", file);
+			fs.unlink(file);
+			var errors = fs.appendFileSync("not_downloaded.txt", index + ":" + symbol);
+			return;
+		}
+		console.log("Succesfull download of " + symbol);
+	})
 });
 
