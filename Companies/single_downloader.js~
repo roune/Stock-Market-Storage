@@ -37,10 +37,10 @@ download(url, file, function(err) {
 		if (err) throw err;
 		if(data.indexOf("automated data")!==-1) {
 			fs.unlink(file);
-			fs.appendFileSync("automated_detection.txt", index + ":" + symbol);
+			var errors = fs.appendFileSync("automated_detection.txt", index + ":" + symbol);
 		} else if (data.indexOf("requested URL was not found on this server")!==-1) {
 			fs.unlink(file);
-			fs.appendFileSync("error404.txt", index + ":" + symbol);
+			var errors = fs.appendFileSync("error404.txt", index + ":" + symbol);
 		} else {
 			console.log("Succesfull download of " + symbol);
 		}

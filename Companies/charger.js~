@@ -7,7 +7,7 @@ market = market.toUpperCase();
 
 indexes.forEach(function(i, index) {
 	var cmd = "nodejs single_downloader.js " + process.argv[2] + " " + i["Symbol"];
-	exec(cmd);
+	exec(cmd, {stdio:[0,1,2]});
 	var cmd2 = "nodejs reorderer.js " + market + i["Symbol"] + " &"
 	var res = exec(cmd2);
 	if (res instanceof Error) {
