@@ -37,10 +37,13 @@ download(url, file, function(err) {
 		if (err) throw err;
 		if(data.indexOf("automated data")!==-1) {
 			fs.unlink(file);
-			fs.appendFileSync("automated_detection.txt", index + ":" + symbol);
+			fs.appendFileSync("automated_detection.txt", index + ":" + symbol + "\n");
 		} else if (data.indexOf("requested URL was not found on this server")!==-1) {
 			fs.unlink(file);
-			fs.appendFileSync("error404.txt", index + ":" + symbol);
+			fs.appendFileSync("error404.txt", index + ":" + symbol + "\n");
+		} else if (data.indexOf("302 Moved")!==-1) {
+			fs.unlink(file);
+			fs.appendFileSync("error302.txt", index + ":" + symbol + "\n");
 		} else {
 			console.log("Succesfull download of " + symbol);
 		}
