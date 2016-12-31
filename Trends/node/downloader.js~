@@ -1,0 +1,22 @@
+var googleTrends = require('google-trends-api');
+
+var arg = process.argv[2];
+
+/*googleTrends.trendData([arg], {type: 'day', value: 5})
+.then(function(results) {
+	console.log(results);
+})
+.catch(function(err) {
+	console.log(err);
+});*/
+
+googleTrends.trendData({keywords: 'Oj Simpson', date: '200401', timePeriod: {type: 'day', value: 90}})
+.then(function(results){
+  console.log(results);
+  results[0].values.forEach(function(v) {
+  	console.log(v);
+  })
+})
+.catch(function(err){
+  console.error(err);
+});
